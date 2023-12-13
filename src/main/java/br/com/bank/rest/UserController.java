@@ -1,25 +1,41 @@
 package br.com.bank.rest;
 
+import br.com.bank.persistence.dto.UserDto;
+import br.com.bank.persistence.model.User;
 import br.com.bank.services.UserService;
+import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
-import jakarta.ws.rs.GET;
-import jakarta.ws.rs.POST;
-import jakarta.ws.rs.Path;
+import jakarta.validation.Valid;
+import jakarta.ws.rs.*;
 import jakarta.ws.rs.core.Response;
 
-@Path("/v1/usuarios")
+
+import java.util.List;
+
+@ApplicationScoped
+@Path("/v1/users")
 public class UserController {
 
 
     @Inject
-    UserService userService;
+    UserService service;
 
     @GET
-    public Response listarUser() {
-        return Response.status(Response.Status.OK).entity("ok").build();
+    public Response listarUserAll() {
+        List<User> user = this.service.getUsers();
+        return Response.status(Response.Status.OK).entity(user).build();
     }
+
+    @GET
+    @Path("/{id}")
+    public Response listarUser(@PathParam("id") Long id) {
+        User user = this.service.getUser(id);
+        return Response.status(Response.Status.OK).entity(user).build();
+    }
+
     @POST
-    public Response criarUser() {
-        return Response.status(Response.Status.OK).entity("ok").build();
+    public Response criarUser(@Valid UserDto userData) {
+        this.service.criarUser(userData);
+        return Response.status(Response.Status.CREATED).entity("ok").build();
     }
 }
