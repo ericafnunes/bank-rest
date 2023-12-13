@@ -1,5 +1,6 @@
 package br.com.bank.rest;
 
+import br.com.bank.exceptions.NotFoundException;
 import br.com.bank.persistence.dto.UserDto;
 import br.com.bank.persistence.model.User;
 import br.com.bank.services.UserService;
@@ -29,7 +30,9 @@ public class UserController {
     @GET
     @Path("/{id}")
     public Response listarUser(@PathParam("id") Long id) {
-        User user = this.service.getUser(id);
+        User user = this.service.getUser(id).orElseThrow(() -> {
+            return new NotFoundException("Não foi encontrado o usuario!");
+        });
         return Response.status(Response.Status.OK).entity(user).build();
     }
 

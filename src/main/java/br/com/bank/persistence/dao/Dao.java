@@ -1,10 +1,11 @@
 package br.com.bank.persistence.dao;
 
 import java.util.List;
+import java.util.Optional;
 
 public interface Dao<T> {
 
-    T get(Long id);
+     Optional<T> get(Long id);
 
     List<T>getAll();
 

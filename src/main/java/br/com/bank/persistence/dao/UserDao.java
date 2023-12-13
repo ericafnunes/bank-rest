@@ -5,9 +5,11 @@ import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
 import jakarta.persistence.Entity;
 import jakarta.persistence.EntityManager;
+import jakarta.persistence.NoResultException;
 import jakarta.transaction.Transactional;
 
 import java.util.List;
+import java.util.Optional;
 
 
 @ApplicationScoped
@@ -17,8 +19,13 @@ public class UserDao implements Dao<User> {
     EntityManager em;
 
     @Override
-    public User get(Long id) {
-       return this.em.find(User.class,id);
+    public Optional<User> get(Long id) {
+       try {
+           var query = this.em.createQuery("SELECT u FROM User u WHERE id = :id", User.class);
+           return Optional.of(query.setParameter("id", id).getSingleResult());
+       } catch (NoResultException ex){
+          return Optional.empty();
+       }
     }
 
     @Override

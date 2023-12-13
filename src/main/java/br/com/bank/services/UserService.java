@@ -8,6 +8,7 @@ import jakarta.inject.Inject;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @ApplicationScoped
 public class UserService {
@@ -27,7 +28,7 @@ public class UserService {
         return this.userDao.getAll();
     }
 
-    public User getUser(Long id){
+    public Optional<User> getUser(Long id){
         return this.userDao.get(id);
     }
 }
