@@ -1,5 +1,6 @@
 package br.com.bank.persistence.dto;
 
+import br.com.bank.persistence.model.AccountType;
 import io.smallrye.common.constraint.NotNull;
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotBlank;
@@ -48,3 +49,5 @@ public class UserDto {
     }
 
 }
+
+

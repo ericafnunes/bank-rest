@@ -1,5 +1,6 @@
 package br.com.bank.persistence.dao;
 
+import br.com.bank.persistence.model.Account;
 import br.com.bank.persistence.model.User;
 import jakarta.enterprise.context.ApplicationScoped;
 import jakarta.inject.Inject;
@@ -34,6 +35,7 @@ public class UserDao implements Dao<User> {
        return query.getResultList();
     }
 
+
     @Override
     @Transactional
     public void save(User user) {
@@ -41,8 +43,9 @@ public class UserDao implements Dao<User> {
     }
 
     @Override
-    public void update() {
-
+    @Transactional
+    public void update(User user) {
+        this.em.merge(user);
     }
 
     @Override
