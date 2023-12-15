@@ -1,6 +1,6 @@
 # Bankapp
 
-Projeto usando Quarkus e banco de dados Mysql. 
+Projeto usando Quarkus e banco de dados Mysql.
 
 RESTful API de um banco que permite:
 Cadastrar Usuário
