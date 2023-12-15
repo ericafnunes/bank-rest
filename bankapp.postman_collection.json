@@ -1,0 +1,99 @@
+{
+	"info": {
+		"_postman_id": "a0513a4e-11d8-4bfe-933c-65075eb3ec6d",
+		"name": "bankapp",
+		"description": "RESTful API que permite:\n\n- Cadastrar Usuário\n- Detalhar Usuário\n- Listar Todos Usuários\n- Detalhar Contas\n- Cadastrar Contas\n    \n- Sacar Valor da Conta\n    \n- Depositar Valor da Conta",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "31829534"
+	},
+	"item": [
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"name\": \"Mario\",\n  \"age\": 31,\n  \"telefone\": \"985344646\",\n  \"endereco\": \"Rua do mario, 123\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/v1/usuarios",
+				"description": "**Criar um usuário**"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/v1/usuarios",
+				"description": "**Listar todas os usuarios do banco**"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n  \"accountType\": \"CORRENTE\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": "http://localhost:8080/v1/usuarios/{id}/contas",
+				"description": "**Criar uma conta para o usuário**"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:8080/v1/usuarios/contas",
+				"description": "**Listar todas as contas do banco**"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://localhost:porta/v1/usuarios/{userId}/contas/{accountId}",
+				"description": "**Obter os detalhes de conta de uma pessoa**"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/v1/usuarios/{id}/depositar",
+				"description": "**Depositar valor na conta**"
+			},
+			"response": []
+		},
+		{
+			"name": "New Request",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": "http://localhost:8080/v1/usuarios/{id}/sacar",
+				"description": "**Sacar valor da conta**"
+			},
+			"response": []
+		}
+	]
+}
