@@ -40,4 +40,4 @@ You can run your application in dev:
 
 ## Documentação da API:
 
-Para testar a API, você pode baixar a coleção do Postman [aqui]().
+Para testar a API, você pode baixar a coleção do Postman [aqui]()
